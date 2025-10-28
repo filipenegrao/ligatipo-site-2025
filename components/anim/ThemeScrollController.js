@@ -2,74 +2,33 @@
 import { useLayoutEffect } from "react";
 import { gsap, ScrollTrigger } from "@/components/anim/gsapClient";
 
-export default function ThemeScrollController({
-  sectionSelector = ".themed-section",
-  bgLayerSelector = "#bg-layer",
-  menuSelector = ".site-menu",
-  start = "top 65%",
-  end = "bottom 35%",
-  ease = "power2.out",
-}) {
+export default function ThemeScrollController() {
   useLayoutEffect(() => {
-    const bgEl = document.querySelector(bgLayerSelector);
-    const menuEl = document.querySelector(menuSelector);
-    if (!bgEl || !menuEl) return;
+    const bg = document.querySelector("#bg-layer");
+    const menu = document.querySelector(".site-menu");
+    const sections = gsap.utils.toArray(".themed-section");
+    if (!bg || !menu || !sections.length) return;
 
-    const prefersReduced = window.matchMedia(
-      "(prefers-reduced-motion: reduce)"
-    ).matches;
-    const durBG = prefersReduced ? 0.01 : 0.6;
-    const durMenu = prefersReduced ? 0.01 : 0.4;
-
-    const sections = gsap.utils.toArray(sectionSelector);
-
-    // Anima imediatamente para a seção “mais visível” ao carregar
-    const setInitial = () => {
-      let best = null,
-        bestArea = 0,
-        vh = window.innerHeight;
-      sections.forEach((sec) => {
-        const r = sec.getBoundingClientRect();
-        const overlap = Math.max(
-          0,
-          Math.min(vh, r.bottom) - Math.max(0, r.top)
-        );
-        if (overlap > bestArea) {
-          best = sec;
-          bestArea = overlap;
-        }
-      });
-      if (best) {
-        const bg = best.getAttribute("data-bg") || "#fff";
-        const menu = best.getAttribute("data-menu") || "#111";
-        gsap.set(bgEl, { backgroundColor: bg });
-        gsap.set(menuEl, { color: menu });
-      }
-    };
-
-    setInitial();
+    gsap.registerPlugin(ScrollTrigger);
     ScrollTrigger.getAll().forEach((t) => t.kill());
 
     sections.forEach((sec) => {
-      const bg = sec.getAttribute("data-bg") || "#fff";
-      const menu = sec.getAttribute("data-menu") || "#111";
+      const color = sec.getAttribute("data-bg");
+      const menuColor = sec.getAttribute("data-menu");
       ScrollTrigger.create({
         trigger: sec,
-        start,
-        end,
+        start: "top 70%",
+        end: "bottom 30%",
         onEnter: () => {
-          gsap.to(bgEl, { backgroundColor: bg, duration: durBG, ease });
-          gsap.to(menuEl, { color: menu, duration: durMenu, ease });
+          gsap.to(bg, { backgroundColor: color, duration: 0.8 });
+          gsap.to(menu, { color: menuColor, duration: 0.6 });
         },
         onEnterBack: () => {
-          gsap.to(bgEl, { backgroundColor: bg, duration: durBG, ease });
-          gsap.to(menuEl, { color: menu, duration: durMenu, ease });
+          gsap.to(bg, { backgroundColor: color, duration: 0.8 });
+          gsap.to(menu, { color: menuColor, duration: 0.6 });
         },
       });
     });
-
-    return () => ScrollTrigger.getAll().forEach((t) => t.kill());
-  }, [sectionSelector, bgLayerSelector, menuSelector, start, end, ease]);
-
+  }, []);
   return null;
 }

@@ -14,7 +14,10 @@ export default function Home() {
       <div
         id="bg-layer"
         className="fixed inset-0 -z-10"
-        style={{ backgroundColor: "#ffffff", willChange: "background-color" }}
+        style={{
+          backgroundColor: "#F6F4EA",
+          transition: "background-color 0.8s ease",
+        }}
       />
       <ThemeScrollController
         sectionSelector=".themed-section"
