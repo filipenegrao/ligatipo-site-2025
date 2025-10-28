@@ -1,0 +1,53 @@
+@use "../../app/globals" as *;
+
+.font-cards {
+    background-color: $rose-pompadour;
+    width: 300px;
+    border-radius: 20px;
+    padding: 20px;
+    color: $eggshell;
+    box-shadow: 0 4px 4px 0 rgba(0, 0, 0, 0.25);
+
+    .card-header {
+        display: flex;
+        align-items: center;
+        gap: 15px;
+
+        .line-left,
+        .line-right {
+            height: 1.5px;
+            background-color: $eggshell;
+            width: 100%;
+        }
+
+        .icon {
+            font-size: 40px;
+        }
+    }
+
+    .card-body {
+        .font-text {
+            font-size: 2rem;
+            line-height: 2rem;
+            word-break: break-word;
+            text-align: center;
+        }
+
+        /* espaçamento entre linhas */
+        .font-text+.font-text {
+            margin-top: 8px;
+        }
+
+    }
+
+    .divider {
+        height: 1.5px;
+        background-color: $eggshell;
+        margin-top: 25px
+    }
+
+    .font-name {
+        margin-top: 15px;
+        text-align: center;
+    }
+}

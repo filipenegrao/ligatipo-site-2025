@@ -1,0 +1,59 @@
+@use "../../app/globals" as *;
+
+.section-our-team {
+    position: relative; // ancora o fill ao section
+    min-height: 60vh; // ajuste para o tamanho desejado
+    overflow: hidden; // evita "vazamento" da imagem
+
+    h2 {
+        color: $eggshell;
+    }
+}
+
+.bg {
+    position: absolute;
+    inset: 0; // top/right/bottom/left: 0
+    z-index: -1;
+}
+
+.bgImage {
+    object-fit: cover;
+}
+
+.section-content {
+    position: relative;
+    z-index: 1; // conteúdo acima da imagem
+}
+
+.team-names {
+    padding-inline: $default-padding-w;
+    // padding-top: 200px;
+    display: flex;
+    color: $eggshell;
+    height: 100%;
+    width: 100%;
+
+    .left,
+    .right {
+        width: 50%;
+    }
+
+    .team-name {
+        width: 50%;
+    }
+}
+
+.social-media {
+    display: flex;
+    gap: 1rem;
+}
+
+.team-member {
+    width: 50%;
+}
+
+.line {
+    height: 1.5px;
+    background-color: $eggshell;
+    width: 90%;
+}

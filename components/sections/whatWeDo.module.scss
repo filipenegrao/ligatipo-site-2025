@@ -1,0 +1,48 @@
+@use "../../app/globals" as *;
+
+.section-what-we-do {
+    // background-color: $eggshell;
+
+    .section-content {
+        display: flex;
+        gap: 2rem;
+
+        h2 {
+            // padding-top: 12px;
+            display: inline-block;
+            width: $default-header-width;
+            color: $green;
+        }
+
+        .what-we-do-items {
+            width: 100%;
+        }
+    }
+}
+
+.custom-accordion {
+    padding-top: 35px;
+    color: $green; // define a cor do texto (e do ícone via currentColor)
+
+    /* A classe .border-b vem do Tailwind — como está fora do módulo, use :global */
+    :global(.border-b) {
+        border-color: $green !important;
+    }
+
+    /* animação da barra vertical para sumir ao abrir */
+    [data-icon="v"] {
+        transition: opacity .2s ease, transform .2s ease;
+        transform-origin: center;
+    }
+
+    /* quando o item está aberto → vira "-" */
+    [data-state="open"] [data-icon="v"] {
+        opacity: 0;
+        transform: scaleY(0);
+    }
+
+    /* opcional: girar o ícone ao abrir */
+    [data-state="open"] .accordion-icon {
+        transform: rotate(180deg);
+    }
+}

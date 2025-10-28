@@ -1,0 +1,30 @@
+@use "../../app/globals" as *;
+
+.section-intro {
+    // background-color: $green;
+
+    .section-content {
+        height: 100%;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+
+        h1 {
+            color: $eggshell;
+            font-size: 4rem;
+            width: 33%;
+        }
+
+        .middle-line {
+            height: 100%;
+            width: 1.5px;
+            background-color: $eggshell;
+        }
+
+        .logo-container {
+            display: flex;
+            justify-content: flex-end;
+            width: 33%;
+        }
+    }
+}

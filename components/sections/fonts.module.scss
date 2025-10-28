@@ -1,0 +1,16 @@
+@use "../../app/globals" as *;
+
+.fonts-section {
+    // background-color: $mustard;
+
+    // .section-header {
+    //     color: $green;
+    // }
+
+    .fonts-container {
+        display: flex;
+        gap: 30px;
+        align-items: flex-start;
+        padding-left: $default-padding-w;
+    }
+}

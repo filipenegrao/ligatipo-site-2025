@@ -1,0 +1,53 @@
+/* SCSS RGB */
+$green: rgba(1, 89, 88, 1);
+$eggshell: rgba(240, 239, 221, 1);
+$tea-rose: rgba(248, 205, 204, 1);
+$mustard: rgba(255, 221, 68, 1);
+$rose-pompadour: rgba(243, 127, 147, 1);
+
+// SCSS SIZES
+// size for headers' width 
+$default-header-width: 125px;
+$default-gap: 2rem;
+$default-padding-w: 3rem;
+
+// variables for color page transitions
+:root {
+    --page-bg: rgba(1, 89, 88, 1);
+    --menu-fg: rgba(240, 239, 221, 1);
+}
+
+
+// GLOBAL NAV & FOOTER ELEMENTS
+.site-menu {
+    color: var(--menu-fg);
+    transition: color 250ms ease, fill 250ms ease, border-color 250ms ease;
+    // talvez dê pra remover o fill e o border-color
+
+    a {
+        color: inherit;
+    }
+}
+
+.header {
+    border-bottom: 1px solid var(--menu-fg);
+}
+
+// GLOBAL CLASSES
+body {
+    background-color: var(--page-bg);
+    color: var(--menu-fg);
+    transition: background-color 400ms ease;
+}
+
+.section {
+    height: 100vh;
+
+    .section-content {
+        padding: 5rem 3rem;
+
+        .section-header {
+            padding-top: 3rem;
+        }
+    }
+}
