@@ -4,7 +4,7 @@ import LogoLigatipo from "../svgs/logo-ligatipo";
 export default function Intro() {
   return (
     <section
-      className={`${styles["section-intro"]} ${styles.section} ${styles["themed-section"]}`}
+      className={`${styles["section-intro"]} ${styles.section} themed-section`}
       data-bg="#015958"
       data-menu="#F0EFDD"
     >

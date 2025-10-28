@@ -11,12 +11,19 @@ import {
 import Instagram from "../svgs/instagram";
 import GithubIcon from "../svgs/github";
 import LinkedInIcon from "../svgs/linkedin";
+import { useRef } from "react";
+import useParallaxImage from "../anim/useParallaxImage";
 
 export default function OurTeam() {
+  const sectionRef = useRef(null);
+  const bgRef = useRef(null);
+  useParallaxImage(sectionRef, bgRef, 10);
+
   return (
     <section
-      className={`${styles["section-our-team"]} ${styles.section} ${styles["themed-section"]}`}
-      data-bg="#F8CDCC"
+      ref={sectionRef}
+      className={`${styles["section-our-team"]} ${styles.section} themed-section`}
+      data-bg="#F37F93"
       data-menu="#F0EFDD"
     >
       <div className={styles["section-content"]}>
@@ -133,7 +140,7 @@ export default function OurTeam() {
           </Accordion>
         </div>
       </div>
-      <div className={styles["bg"]}>
+      <div ref={bgRef} className={styles["bg"]}>
         <Image
           src={teamImg}
           alt="Filipe e Deia"

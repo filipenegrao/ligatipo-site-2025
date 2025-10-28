@@ -9,7 +9,7 @@ import {
 export default function WhatWeDo() {
   return (
     <section
-      className={`${styles["section-what-we-do"]} ${styles.section} ${styles["themed-section"]}`}
+      className={`${styles["section-what-we-do"]} ${styles.section} themed-section`}
       data-bg="#F0EFDD"
       data-menu="#015958"
     >

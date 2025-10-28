@@ -6,17 +6,20 @@
     bottom: 0;
     width: 100%;
     height: 5rem;
-    display: flex;
-    gap: 2rem;
-    align-items: center;
-    border-top: 1px solid $eggshell;
+
+    .site-line {
+        width: 100%;
+        height: 1px;
+        background-color: currentColor;
+    }
 }
 
 .footer-content {
     display: flex;
-    gap: 2rem;
+    // gap: 2rem;
     align-items: center;
     width: 100%;
+    height: 100%;
     padding-left: 3rem;
 }
 
@@ -29,7 +32,7 @@
 .newsletter-form {
     display: flex;
     align-items: center;
-    border: 1px solid $eggshell;
+    border: 1px solid currentColor;
     border-radius: 100px;
     background-color: inherit;
     padding: 0.5rem 0.5rem 0.5rem 1.5rem;
@@ -46,7 +49,7 @@
         letter-spacing: 1px;
 
         &::placeholder {
-            color: rgba($eggshell, 0.6);
+            color: currentColor;
         }
     }
 
@@ -68,8 +71,6 @@
         }
 
         &:hover {
-            background-color: color.adjust($eggshell, $lightness: 5%);
-
             svg {
                 transform: translateX(4px);
             }

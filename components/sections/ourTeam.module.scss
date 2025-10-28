@@ -14,7 +14,20 @@
     position: absolute;
     inset: 0; // top/right/bottom/left: 0
     z-index: -1;
+
+    &::after {
+        content: "";
+        position: absolute;
+        inset: 0;
+        pointer-events: none;
+        /* escurece levemente */
+        background: rgba(0, 0, 0, 0.14);
+        /* ou use o tom da sua paleta:*/
+        background: rgba($green, 0.14);
+        mix-blend-mode: multiply;
+    }
 }
+
 
 .bgImage {
     object-fit: cover;

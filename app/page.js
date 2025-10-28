@@ -15,7 +15,7 @@ export default function Home() {
         id="bg-layer"
         className="fixed inset-0 -z-10"
         style={{
-          backgroundColor: "#F6F4EA",
+          backgroundColor: "#015958",
           transition: "background-color 0.8s ease",
         }}
       />

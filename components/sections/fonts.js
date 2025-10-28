@@ -4,9 +4,7 @@ import FontCards from "../complements/font-cards";
 export default function Fonts() {
   return (
     <section
-      className={`${styles["fonts-section"]} ${
-        styles.section
-      } ${"themed-section"}`}
+      className={`${styles["fonts-section"]} ${styles.section} themed-section`}
       data-bg="#FFDD44"
       data-menu="#015958"
     >

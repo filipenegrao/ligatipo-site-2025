@@ -29,15 +29,21 @@ $default-padding-w: 3rem;
     }
 }
 
-.header {
-    border-bottom: 1px solid var(--menu-fg);
+// .header {
+//     border-bottom: 1px solid var(--menu-fg);
+// }
+
+.site-line {
+    width: 100%;
+    height: 1px;
+    background-color: currentColor;
 }
 
 // GLOBAL CLASSES
 body {
     background-color: var(--page-bg);
     color: var(--menu-fg);
-    transition: background-color 400ms ease;
+    // transition: background-color 400ms ease;
 }
 
 .section {
@@ -48,6 +54,7 @@ body {
 
         .section-header {
             padding-top: 3rem;
+            font-weight: bold;
         }
     }
 }

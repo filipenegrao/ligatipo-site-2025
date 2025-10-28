@@ -1,11 +1,11 @@
 @use "../../app/globals" as *;
 
 .fonts-section {
-    // background-color: $mustard;
+    background-color: transparent;
 
-    // .section-header {
-    //     color: $green;
-    // }
+    .section-header {
+        color: $green;
+    }
 
     .fonts-container {
         display: flex;
