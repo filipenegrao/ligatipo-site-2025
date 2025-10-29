@@ -4,8 +4,8 @@ import Link from "next/link";
 export default function MainHeader() {
   return (
     <>
-      <header className={`${styles.header}`}>
-        <div className={`${styles["content-header"]} site-menu`}>
+      <header className={`${styles.header} header-main site-menu`}>
+        <div className={`${styles["content-header"]}`}>
           <Link href="/" className={styles.logo}>
             ligatipo
           </Link>

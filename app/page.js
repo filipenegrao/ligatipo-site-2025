@@ -1,5 +1,6 @@
 "use client";
 import ThemeScrollController from "@/components/anim/ThemeScrollController";
+import HideUIOnScroll from "@/components/anim/HideUIOnScroll";
 
 import MainHeader from "@/components/main-header";
 import FixedFooter from "@/components/fixed-footer";
@@ -24,6 +25,7 @@ export default function Home() {
         bgLayerSelector="#bg-layer"
         menuSelector=".site-menu"
       />
+      <HideUIOnScroll />
       <MainHeader />
       <FixedFooter />
       <IntroSection />

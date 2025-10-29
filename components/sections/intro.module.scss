@@ -1,7 +1,7 @@
 @use "../../app/globals" as *;
 
 .section-intro {
-    // background-color: $green;
+    background-color: $green;
 
     .section-content {
         height: 100%;
@@ -19,6 +19,7 @@
             height: 100%;
             width: 1.5px;
             background-color: $eggshell;
+            will-change: transform;
         }
 
         .logo-container {
