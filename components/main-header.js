@@ -23,6 +23,12 @@ export default function MainHeader() {
               <li>
                 <Link href="/what-we-do">fontes custom</Link>
               </li>
+              <li>
+                <Link href="/fonts-in-use">fontes em uso</Link>
+              </li>
+              <li>
+                <Link href="/contact">contato</Link>
+              </li>
             </ul>
           </nav>
         </div>
