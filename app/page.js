@@ -8,6 +8,7 @@ import IntroSection from "@/components/sections/introSection";
 import WhatWeDo from "@/components/sections/whatWeDo";
 import OurTeam from "@/components/sections/ourTeam";
 import Fonts from "@/components/sections/fonts";
+import Contact from "@/components/sections/contact";
 
 export default function Home() {
   return (
@@ -32,6 +33,7 @@ export default function Home() {
       <OurTeam />
       <WhatWeDo />
       <Fonts />
+      <Contact />
     </>
   );
 }

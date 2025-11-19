@@ -23,7 +23,7 @@ export default function OurTeam() {
     <section
       ref={sectionRef}
       className={`${styles["section-our-team"]} ${styles.section} themed-section`}
-      data-bg="#F37F93"
+      data-bg="#015958"
       data-menu="#F0EFDD"
     >
       <div className={styles["section-content"]}>

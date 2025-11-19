@@ -1,0 +1,65 @@
+@use "../../app/globals" as *;
+
+.section-content {
+    display: flex;
+}
+
+.contact-form {
+    padding-left: 5.5rem;
+    padding-top: 2.5rem;
+    width: 50%;
+}
+
+.form-input-group {
+    position: relative;
+
+    textarea,
+    input {
+        width: 100%;
+        padding: 10px 0;
+        font-size: 16px;
+        color: $eggshell;
+        margin-bottom: 30px;
+        border: none;
+        border-bottom: 1px solid $eggshell;
+        outline: none;
+        background: transparent;
+
+        &:focus,
+        &:valid {
+            border-bottom: 1px solid $green;
+        }
+
+        &:focus~label,
+        &:valid~label {
+            top: -20px;
+            font-size: 12px;
+            color: $green;
+        }
+    }
+
+
+    label {
+        position: absolute;
+        top: 0;
+        left: 0;
+        padding: 10px 0;
+        color: #fff;
+        font-size: 16px;
+        pointer-events: none;
+        transition: 0.2s ease all;
+    }
+}
+
+.message {
+    margin-top: 20px;
+    transition: 0.2s ease all;
+
+    &.success-message {
+        color: $green;
+    }
+
+    &.error-message {
+        color: $mustard;
+    }
+}
