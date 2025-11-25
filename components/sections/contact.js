@@ -23,11 +23,14 @@ export default function Contact() {
       if (res.ok) {
         setStatus("success");
         setForm({ name: "", email: "", message: "" });
+        setTimeout(() => setStatus(null), 5000);
       } else {
         setStatus("error");
+        setTimeout(() => setStatus(null), 5000);
       }
     } catch (err) {
       setStatus("error");
+      setTimeout(() => setStatus(null), 5000);
     } finally {
       setLoading(false);
     }
@@ -41,64 +44,98 @@ export default function Contact() {
     >
       <div className={styles["section-content"]}>
         <h2 className={styles["section-header"]}>Contato</h2>
-        <form className={styles["contact-form"]} onSubmit={handleSubmit}>
-          <div className={styles["form-input-group"]}>
-            <input
-              type="text"
-              id="name"
-              name="name"
-              required
-              value={form.name}
-              onChange={handleChange}
-            />
-            <label htmlFor="name">Nome</label>
-          </div>
+        <div className={styles["section-wrapper"]}>
+          <form className={styles["contact-form"]} onSubmit={handleSubmit}>
+            <div className={styles["form-input-group"]}>
+              <input
+                type="text"
+                id="name"
+                name="name"
+                required
+                value={form.name}
+                onChange={handleChange}
+              />
+              <label htmlFor="name">Nome</label>
+            </div>
 
-          <div className={styles["form-input-group"]}>
-            <input
-              type="email"
-              id="email"
-              name="email"
-              required
-              value={form.email}
-              onChange={handleChange}
-            />
-            <label htmlFor="email">Email</label>
-          </div>
+            <div className={styles["form-input-group"]}>
+              <input
+                type="email"
+                id="email"
+                name="email"
+                required
+                value={form.email}
+                onChange={handleChange}
+              />
+              <label htmlFor="email">Email</label>
+            </div>
 
-          <div
-            className={`${styles["form-input-group"]} ${styles["textarea-group"]}`}
-          >
-            <textarea
-              id="message"
-              name="message"
-              rows="4"
-              required
-              value={form.message}
-              onChange={handleChange}
-            ></textarea>
-            <label htmlFor="message">Mensagem</label>
-          </div>
+            <div
+              className={`${styles["form-input-group"]} ${styles["textarea-group"]}`}
+            >
+              <textarea
+                id="message"
+                name="message"
+                rows="4"
+                required
+                value={form.message}
+                onChange={handleChange}
+              ></textarea>
+              <label htmlFor="message">Mensagem</label>
+            </div>
 
-          <button
-            type="submit"
-            className={`${styles["submit-button"]} button`}
-            disabled={loading}
-          >
-            {loading ? "Enviando..." : "Enviar"}
-          </button>
-          {status === "success" && (
-            // <p style={{ color: "green", marginTop: 10 }}>Mensagem enviada!</p>
-            <p className={`${styles["success-message"]} ${styles["message"]}`}>
-              Mensagem enviada!
-            </p>
-          )}
-          {status === "error" && (
-            <p className={`${styles["error-message"]} ${styles["message"]}`}>
-              Erro ao enviar. Tente novamente.
-            </p>
-          )}
-        </form>
+            <button
+              type="submit"
+              className={`${styles["submit-button"]} button ${
+                status === "success"
+                  ? styles["success-state"]
+                  : status === "error"
+                  ? styles["error-state"]
+                  : ""
+              }`}
+              disabled={loading || status !== null}
+            >
+              {status === "success"
+                ? "Mensagem enviada!"
+                : status === "error"
+                ? "Erro ao enviar!"
+                : loading
+                ? "Enviando..."
+                : "Enviar"}
+            </button>
+          </form>
+          {/* <div className={styles["social-media"]}>
+            <ul className={styles["social-media-list"]}>
+              <li>
+                <a
+                  href="https://www.instagram.com/ligatipo/"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                >
+                  IN
+                </a>
+              </li>
+              <li>
+                <a
+                  href="https://www.linkedin.com/company/ligatipo/"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                >
+                  LI
+                </a>
+              </li>
+              <li>
+                <a
+                  href="https://ligatipo.substack.com/"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                >
+                  SB
+                </a>
+              </li>
+            </ul>
+          </div> */}
+        </div>
       </div>
     </section>
   );

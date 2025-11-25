@@ -47,7 +47,7 @@
         outline: none;
         color: $eggshell;
         font-size: 1rem;
-        text-transform: uppercase;
+        text-transform: lowercase;
         letter-spacing: 1px;
 
         &::placeholder {
@@ -77,5 +77,18 @@
                 transform: translateX(4px);
             }
         }
+    }
+}
+
+.message {
+    margin-top: 20px;
+    transition: 0.2s ease all;
+
+    &.success-message {
+        color: $green;
+    }
+
+    &.error-message {
+        color: $mustard;
     }
 }

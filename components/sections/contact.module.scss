@@ -2,6 +2,10 @@
 
 .section-content {
     display: flex;
+
+    .section-wrapper {
+        width: 100%;
+    }
 }
 
 .contact-form {
