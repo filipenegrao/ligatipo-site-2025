@@ -5,7 +5,7 @@ $green: rgba(1, 89, 88, 1);
 $eggshell: rgba(240, 239, 221, 1);
 $tea-rose: rgba(248, 205, 204, 1);
 $mustard: rgba(255, 221, 68, 1);
-$rose-pompadour: #f37f93;
+$rose-pompadour: rgba(243, 127, 147, 1);
 
 // SCSS SIZES
 // size for headers' width 
@@ -57,6 +57,7 @@ body {
         .section-header {
             padding-top: 3rem;
             font-weight: bold;
+            font-size: 1rem;
         }
     }
 }

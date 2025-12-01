@@ -12,6 +12,8 @@
     height: 5rem;
     background-color: color.adjust($eggshell, $alpha: -0.9);
     z-index: 10;
+    transition: transform 0.3s ease, color 0.8s ease;
+    will-change: transform;
 
     .content-header {
         display: flex;

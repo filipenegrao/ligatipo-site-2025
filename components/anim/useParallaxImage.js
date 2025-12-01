@@ -1,5 +1,5 @@
 "use client";
-import { useLayoutEffect } from "react";
+import { useEffect } from "react";
 import { gsap } from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 gsap.registerPlugin(ScrollTrigger);
@@ -9,8 +9,9 @@ export default function useParallaxImage(
   imageWrapperRef,
   amount = 10
 ) {
-  useLayoutEffect(() => {
+  useEffect(() => {
     if (typeof window === "undefined") return;
+    if (!sectionRef.current || !imageWrapperRef.current) return;
 
     const ctx = gsap.context(() => {
       const imgEl = imageWrapperRef.current?.querySelector("img");

@@ -39,7 +39,7 @@ export default function FixedFooter() {
 
   return (
     <>
-      <div className={`${styles["fixed-footer"]} fixed-footer`}>
+      <div className={`${styles["fixed-footer"]} footer-main`}>
         <div className="site-line"></div>
         <div className={styles["footer-content"]}>
           <div className="social-media">

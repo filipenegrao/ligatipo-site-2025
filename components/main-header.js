@@ -1,3 +1,4 @@
+"use client";
 import styles from "./main-header.module.scss";
 import Link from "next/link";
 

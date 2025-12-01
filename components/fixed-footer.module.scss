@@ -8,6 +8,8 @@
     height: 5rem;
     background-color: color.adjust($eggshell, $alpha: -0.9);
     z-index: 10;
+    transition: transform 0.3s ease, color 0.8s ease;
+    will-change: transform;
 
     .site-line {
         width: 100%;
@@ -45,13 +47,14 @@
         background: transparent;
         border: none;
         outline: none;
-        color: $eggshell;
+        color: currentColor;
         font-size: 1rem;
         text-transform: lowercase;
         letter-spacing: 1px;
 
         &::placeholder {
             color: currentColor;
+            opacity: 1;
         }
     }
 
