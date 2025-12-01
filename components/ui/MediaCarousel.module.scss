@@ -21,14 +21,68 @@
 .embla__title {
     display: flex;
     align-items: center;
-    // gap: 1rem;
-    // margin-bottom: 1rem;
+    justify-content: space-between;
+    margin-bottom: 0.5rem;
 
     h3 {
         font-size: 1rem;
         font-weight: bold;
         color: currentColor;
     }
+}
+
+.infoHoverWrapper {
+    position: relative;
+    display: inline-flex;
+    align-items: center;
+}
+
+.embla__info_icon {
+    width: 20px;
+    height: 20px;
+    cursor: pointer;
+    background: transparent;
+    border: none;
+    padding: 0;
+
+    .info_icon {
+        width: 100%;
+        height: 100%;
+        color: currentColor;
+        display: block;
+    }
+}
+
+.infoHoverCard {
+    background-color: rgba($tea-rose, 0.60);
+    color: $green;
+    // border: 1px solid currentColor;
+    border-radius: 8px;
+    padding: 0.75rem 1rem;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.12);
+    min-width: 220px;
+    z-index: 10;
+}
+
+.infoArrow {
+    fill: rgba($tea-rose, 0.60);
+}
+
+.infoRow {
+    display: flex;
+    gap: 0.5rem;
+    align-items: baseline;
+}
+
+.infoLabel {
+    font-weight: 600;
+}
+
+.infoValue {}
+
+.infoLink {
+    color: inherit;
+    text-decoration: underline;
 }
 
 .embla__wrapper {

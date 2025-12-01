@@ -2,39 +2,36 @@
 import ScrollEffects from "@/components/anim/ScrollEffects";
 import MediaCarousel from "@/components/ui/MediaCarousel";
 import styles from "./fonts-in-use.module.scss";
-import imgTest1 from "@/assets/img/temp/img-test-1.png";
-import imgTest2 from "@/assets/img/temp/img-test-2.png";
-import imgTest3 from "@/assets/img/temp/img-test-3.png";
-import imgTest4 from "@/assets/img/temp/img-test-4.png";
+// Temporary: local import fallback kept for dev; fetch used below
+import { useEffect, useState } from "react";
+import { useSearchParams } from "next/navigation";
 
 export default function FontsInUse() {
-  // Exemplo de itens do carrossel
-  const carouselItems = [
-    {
-      type: "image",
-      src: imgTest1.src,
-      alt: "Exemplo de fonte 1",
-      caption: "Tipografia em uso - Exemplo 1",
-    },
-    {
-      type: "image",
-      src: imgTest2.src,
-      alt: "Exemplo de fonte 2",
-      caption: "Tipografia em uso - Exemplo 2",
-    },
-    {
-      type: "image",
-      src: imgTest3.src,
-      alt: "Exemplo de fonte 3",
-      caption: "Tipografia em uso - Exemplo 3",
-    },
-    {
-      type: "image",
-      src: imgTest4.src,
-      alt: "Exemplo de fonte 4",
-      caption: "Tipografia em uso - Exemplo 4",
-    },
-  ];
+  const searchParams = useSearchParams();
+  const showcaseId = searchParams.get("id") ?? "example-1";
+  const [loading, setLoading] = useState(true);
+  const [error, setError] = useState(null);
+  const [showcase, setShowcase] = useState(null);
+
+  useEffect(() => {
+    const fetchShowcase = async () => {
+      try {
+        setLoading(true);
+        const res = await fetch(
+          `/api/showcases?id=${encodeURIComponent(showcaseId)}`
+        );
+        if (!res.ok) throw new Error(`HTTP ${res.status}`);
+        const data = await res.json();
+        setShowcase(data);
+        setError(null);
+      } catch (e) {
+        setError(e.message ?? "Erro ao carregar projeto");
+      } finally {
+        setLoading(false);
+      }
+    };
+    fetchShowcase();
+  }, [showcaseId]);
 
   return (
     <>
@@ -56,7 +53,26 @@ export default function FontsInUse() {
           <div className={styles["section-content"]}>
             <h1 className={styles["section-header"]}>Fontes em Uso</h1>
             <div className={styles["fonts-in-use-items"]}>
-              <MediaCarousel items={carouselItems} title="Fonte Exemplo" />
+              {loading && (
+                <div className={styles.skeletonContainer}>
+                  <div className={styles.skeletonTitle} />
+                  <div className={styles.skeletonBlock} />
+                </div>
+              )}
+              {error && <div>Erro: {error}</div>}
+              {showcase && (
+                <MediaCarousel
+                  items={showcase.items}
+                  title={showcase.title}
+                  projectInfo={{
+                    title: showcase.title,
+                    designer: showcase.designer,
+                    publishedAt: showcase.publishedAt,
+                    contactUrl: showcase.contactUrl,
+                    contactLabel: showcase.contactLabel,
+                  }}
+                />
+              )}
             </div>
           </div>
         </section>

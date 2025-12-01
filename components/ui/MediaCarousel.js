@@ -2,8 +2,9 @@
 import { useCallback, useEffect, useState } from "react";
 import useEmblaCarousel from "embla-carousel-react";
 import styles from "./MediaCarousel.module.scss";
+import * as HoverCard from "@radix-ui/react-hover-card";
 
-export default function MediaCarousel({ items, title }) {
+export default function MediaCarousel({ items, title, projectInfo }) {
   const [emblaRef, emblaApi] = useEmblaCarousel({ loop: true });
   const [selectedIndex, setSelectedIndex] = useState(0);
   const [lightboxOpen, setLightboxOpen] = useState(false);
@@ -54,6 +55,83 @@ export default function MediaCarousel({ items, title }) {
       {title && (
         <div className={styles.embla__title}>
           <h3>{title}</h3>
+          <HoverCard.Root openDelay={100} closeDelay={150}>
+            <HoverCard.Trigger asChild>
+              <button
+                className={styles.embla__info_icon}
+                aria-label="Informações do projeto"
+              >
+                <svg
+                  className={styles.info_icon}
+                  width="180"
+                  height="180"
+                  viewBox="0 0 180 180"
+                  fill="none"
+                  xmlns="http://www.w3.org/2000/svg"
+                >
+                  <path
+                    d="M81.344 138V71.056L96.832 69.136V138H81.344ZM89.28 58.128C83.776 58.128 79.552 54.8 79.552 48.4C79.552 42.128 83.776 38.8 89.28 38.8C94.656 38.8 99.008 42.128 99.008 48.4C99.008 54.8 94.656 58.128 89.28 58.128Z"
+                    fill="#015959"
+                  />
+                  <circle
+                    cx="90"
+                    cy="90"
+                    r="83"
+                    stroke="#015959"
+                    strokeWidth="14"
+                  />
+                </svg>
+              </button>
+            </HoverCard.Trigger>
+            <HoverCard.Content
+              side="left"
+              align="start"
+              className={styles.infoHoverCard}
+            >
+              <div className={styles.infoRow}>
+                <span className={styles.infoLabel}>Título:</span>
+                <span className={styles.infoValue}>
+                  {projectInfo?.title ?? title}
+                </span>
+              </div>
+              {projectInfo?.designer && (
+                <div className={styles.infoRow}>
+                  <span className={styles.infoLabel}>Projeto gráfico:</span>
+                  <span className={styles.infoValue}>
+                    {projectInfo.designer}
+                  </span>
+                </div>
+              )}
+              {projectInfo?.publishedAt && (
+                <div className={styles.infoRow}>
+                  <span className={styles.infoLabel}>Publicação:</span>
+                  <span className={styles.infoValue}>
+                    {projectInfo.publishedAt}
+                  </span>
+                </div>
+              )}
+              {(projectInfo?.contactUrl || projectInfo?.contactLabel) && (
+                <div className={styles.infoRow}>
+                  <span className={styles.infoLabel}>Contato:</span>
+                  {projectInfo?.contactUrl ? (
+                    <a
+                      className={styles.infoLink}
+                      href={projectInfo.contactUrl}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                    >
+                      {projectInfo?.contactLabel ?? projectInfo.contactUrl}
+                    </a>
+                  ) : (
+                    <span className={styles.infoValue}>
+                      {projectInfo?.contactLabel}
+                    </span>
+                  )}
+                </div>
+              )}
+              <HoverCard.Arrow className={styles.infoArrow} />
+            </HoverCard.Content>
+          </HoverCard.Root>
         </div>
       )}
       <div className={styles.line}></div>
