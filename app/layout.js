@@ -1,6 +1,6 @@
 import { Geist, Geist_Mono } from "next/font/google";
-import MainHeader from "@/components/main-header";
-import FixedFooter from "@/components/fixed-footer";
+import ClientLayout from "@/components/ClientLayout";
+import AuthProvider from "@/components/AuthProvider";
 import "./globals.css";
 import "./globals.scss";
 
@@ -25,9 +25,9 @@ export default function RootLayout({ children }) {
       <body
         className={`${geistSans.variable} ${geistMono.variable} antialiased`}
       >
-        <MainHeader />
-        {children}
-        <FixedFooter />
+        <AuthProvider>
+          <ClientLayout>{children}</ClientLayout>
+        </AuthProvider>
       </body>
     </html>
   );

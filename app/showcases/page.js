@@ -12,7 +12,8 @@ export default function ShowcasesIndex() {
     const fetchList = async () => {
       try {
         setLoading(true);
-        const res = await fetch("/api/showcases?page=1&pageSize=50");
+        const base = process.env.NEXT_PUBLIC_API_BASE || "";
+        const res = await fetch(`${base}/showcases?page=1&pageSize=50`);
         if (!res.ok) throw new Error(`HTTP ${res.status}`);
         const data = await res.json();
         setList(data.data ?? []);

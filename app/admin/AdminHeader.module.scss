@@ -1,0 +1,82 @@
+@use "../globals" as *;
+@use "sass:color";
+
+.adminHeader {
+    background-color: $green;
+    color: $eggshell;
+    padding: 1rem 0;
+    position: sticky;
+    inset: 0;
+    z-index: 100;
+    // margin-inline: 25px;
+    // border-radius: 50px;
+
+    .container {
+        max-width: 1400px;
+        margin: 0 auto;
+        padding: 0 2rem;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+    }
+
+    .logo {
+        display: flex;
+        text-transform: uppercase;
+        width: $default-header-width;
+        text-decoration: none;
+        color: $eggshell;
+        transition: opacity 0.2s;
+
+        &:hover {
+            opacity: 0.8;
+        }
+
+        .admin {
+            color: $mustard;
+            margin-left: 0.5rem;
+            font-weight: 400;
+            font-size: 1rem;
+        }
+    }
+
+    .nav {
+        display: flex;
+        align-items: center;
+        gap: 2rem;
+    }
+
+    .navLink {
+        color: $eggshell;
+        text-decoration: none;
+        font-weight: 500;
+        transition: color 0.2s;
+
+        &:hover {
+            color: $tea-rose;
+        }
+    }
+
+    .userSection {
+        display: flex;
+        align-items: center;
+        gap: 1rem;
+    }
+
+    .userName {
+        font-size: 0.9rem;
+        opacity: 0.8;
+    }
+
+    .signOut {
+        background-color: transparent;
+        border: 1px solid $tea-rose;
+        color: $tea-rose;
+        padding: 0.5rem 1rem;
+
+        &:hover {
+            background-color: $tea-rose;
+            color: $green;
+        }
+    }
+}

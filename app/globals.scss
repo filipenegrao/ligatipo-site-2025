@@ -7,6 +7,10 @@ $tea-rose: rgba(248, 205, 204, 1);
 $mustard: rgba(255, 221, 68, 1);
 $rose-pompadour: rgba(243, 127, 147, 1);
 
+// Admin colors
+$warning: rgba(248, 90, 62, 1);
+$black: rgba(32, 30, 31, 1);
+
 // SCSS SIZES
 // size for headers' width 
 $default-header-width: 125px;
@@ -76,4 +80,17 @@ body {
     &:hover {
         background-color: color.adjust($green, $lightness: -5%);
     }
+
+    &:disabled {
+        opacity: 0.6;
+        cursor: not-allowed;
+    }
+}
+
+// ADMIN GLOBALS
+.loading {
+    text-align: center;
+    padding: 4rem;
+    font-size: 1.2rem;
+    color: $green;
 }

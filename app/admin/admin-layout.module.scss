@@ -1,0 +1,21 @@
+@use "../globals" as *;
+@use "sass:color";
+
+.adminLayout {
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+    background-color: $eggshell;
+}
+
+.adminMain {
+    flex: 1;
+    width: 100%;
+    /* Align page content with AdminHeader's inner container */
+    max-width: 1400px;
+    margin: 0 auto;
+    padding: 0 2rem;
+    /* Optional top/bottom spacing for pages */
+    padding-top: 2rem;
+    padding-bottom: 2rem;
+}

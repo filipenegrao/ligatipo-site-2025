@@ -1,0 +1,161 @@
+@use "../globals" as *;
+@use "sass:color";
+
+.section-login {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    min-height: 100vh;
+    padding: 2rem;
+}
+
+.content {
+    width: 100%;
+    max-width: 400px;
+    padding: 2.5rem !important;
+    border-radius: 8px;
+    background-color: $eggshell;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.title {
+    color: $green;
+    padding-top: 1rem !important;
+    margin-bottom: 2rem;
+}
+
+.form {
+    width: 100%;
+}
+
+.error {
+    background-color: $mustard;
+    color: $rose-pompadour;
+    padding: 0.75rem;
+    border-radius: 4px;
+    margin-bottom: 1rem;
+    font-size: 0.9rem;
+    text-align: center;
+}
+
+.field {
+    margin-bottom: 0.75rem;
+
+    label {
+        position: absolute;
+        width: 1px;
+        height: 1px;
+        padding: 0;
+        margin: -1px;
+        overflow: hidden;
+        clip: rect(0, 0, 0, 0);
+        white-space: nowrap;
+        border-width: 0;
+    }
+
+    input {
+        width: 100%;
+        padding: 10px 20px;
+        border-radius: 25px;
+        border: 1px solid #ddd;
+        font-size: 1rem;
+        transition: border-color 0.2s;
+        color: $green;
+
+        &:focus {
+            outline: none;
+            border-color: $green;
+        }
+
+        &::placeholder {
+            color: rgba($green, 0.8);
+        }
+    }
+}
+
+.submit {
+    width: 100%;
+    margin-top: 2rem;
+
+    &:hover:not(:disabled) {
+        background-color: color.adjust($green, $lightness: -5%);
+    }
+
+    &:disabled {
+        opacity: 0.6;
+        cursor: not-allowed;
+    }
+}
+
+.divider {
+    display: flex;
+    align-items: center;
+    text-align: center;
+    margin: 1.5rem 0;
+    color: rgba($green, 0.6);
+    font-size: 0.9rem;
+
+    &::before,
+    &::after {
+        content: "";
+        flex: 1;
+        border-bottom: 1px solid rgba($green, 0.2);
+    }
+
+    span {
+        padding: 0 1rem;
+    }
+}
+
+.google-btn {
+    width: 100%;
+    padding: 0.75rem;
+    border: 1px solid #ddd;
+    border-radius: 25px;
+    background-color: #fff;
+    color: $green;
+    font-size: 1rem;
+    font-weight: 500;
+    cursor: pointer;
+    transition: all 0.2s;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.75rem;
+
+    &:hover:not(:disabled) {
+        background-color: #f8f9fa;
+        border-color: $green;
+    }
+
+    &:disabled {
+        opacity: 0.6;
+        cursor: not-allowed;
+    }
+
+    svg {
+        flex-shrink: 0;
+    }
+}
+
+.register-link {
+    text-align: center;
+    margin-top: 1.5rem;
+    font-size: 0.9rem;
+    color: rgba($green, 0.8);
+
+    a {
+        color: inherit;
+        font-weight: 500;
+        text-decoration: underline;
+        transition: color 0.2s;
+
+        &:hover {
+            color: color.adjust($green, $lightness: -5%);
+        }
+    }
+}

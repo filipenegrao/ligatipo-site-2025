@@ -16,10 +16,10 @@ export async function GET(request) {
       contactUrl: "https://instagram.com/ligatipo",
       contactLabel: "Instagram",
       items: [
-        { type: "image", src: "/img/temp/img-test-1.png", alt: "Exemplo 1" },
-        { type: "image", src: "/img/temp/img-test-2.png", alt: "Exemplo 2" },
-        { type: "image", src: "/img/temp/img-test-3.png", alt: "Exemplo 3" },
-        { type: "image", src: "/img/temp/img-test-4.png", alt: "Exemplo 4" },
+        { type: "image", src: "/showcases/img-test-1.png", alt: "Exemplo 1" },
+        { type: "image", src: "/showcases/img-test-2.png", alt: "Exemplo 2" },
+        { type: "image", src: "/showcases/img-test-3.png", alt: "Exemplo 3" },
+        { type: "image", src: "/showcases/img-test-4.png", alt: "Exemplo 4" },
       ],
     },
     "example-2": {
@@ -30,8 +30,8 @@ export async function GET(request) {
       contactUrl: "https://linkedin.com/company/ligatipo",
       contactLabel: "LinkedIn",
       items: [
-        { type: "image", src: "/img/temp/img-test-2.png", alt: "Exemplo A" },
-        { type: "image", src: "/img/temp/img-test-3.png", alt: "Exemplo B" },
+        { type: "image", src: "/showcases/img-test-2.png", alt: "Exemplo A" },
+        { type: "image", src: "/showcases/img-test-3.png", alt: "Exemplo B" },
       ],
     },
   };

@@ -1,0 +1,267 @@
+@use "../../globals" as *;
+@use "sass:color";
+
+// Page container aligned with AdminHeader container
+.container {
+    max-width: 1400px;
+    margin: 0 auto;
+    padding: 0 2rem;
+}
+
+.dropArea {
+    border: 2px dashed rgba($green, 0.3);
+    border-radius: 8px;
+    padding: 2rem;
+    text-align: center;
+    background: rgba($eggshell, 0.5);
+    cursor: pointer;
+    transition: border-color 0.2s, background-color 0.2s;
+}
+
+.dragging {
+    border-color: $green;
+    background: rgba($green, 0.05);
+}
+
+.dropContent {
+    display: flex;
+    flex-direction: column;
+    gap: 0.25rem;
+
+    p {
+        margin: 0;
+        color: $green;
+    }
+}
+
+.small {
+    font-size: 0.85rem;
+    color: rgba($green, 0.7);
+}
+
+.hiddenInput {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    padding: 0;
+    margin: -1px;
+    overflow: hidden;
+    clip: rect(0, 0, 0, 0);
+    white-space: nowrap;
+    border: 0;
+}
+
+
+.header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 2rem;
+    padding-bottom: 1rem;
+    border-bottom: 2px solid $eggshell;
+
+    h1 {
+        font-size: 2rem;
+        color: $green;
+    }
+}
+
+
+
+.list {
+    h2 {
+        margin-bottom: 1.5rem;
+        color: $green;
+    }
+}
+
+.empty {
+    text-align: center;
+    padding: 3rem;
+    color: rgba($green, 0.6);
+    font-style: italic;
+}
+
+.grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+    gap: 1.5rem;
+}
+
+.card {
+    background: $eggshell;
+    padding: 1.5rem;
+    border-radius: 8px;
+    border: 1px solid rgba($green, 0.1);
+    transition: box-shadow 0.2s;
+
+    &:hover {
+        box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+    }
+
+    h3 {
+        margin-bottom: 0.5rem;
+        color: $green;
+        font-size: 1.2rem;
+    }
+}
+
+.designer,
+.date {
+    font-size: 0.9rem;
+    color: rgba($green, 0.7);
+    margin-bottom: 0.5rem;
+}
+
+.actions {
+    display: flex;
+    gap: 0.75rem;
+    margin-top: 1rem;
+    padding-top: 1rem;
+    border-top: 1px solid rgba($green, 0.1);
+}
+
+.btnEdit {
+    flex: 1;
+    padding: 0.5rem;
+    background-color: $green;
+    color: $eggshell;
+    border: none;
+    border-radius: 4px;
+    font-size: 0.9rem;
+    font-weight: 500;
+    cursor: pointer;
+    transition: opacity 0.2s;
+
+    &:hover {
+        opacity: 0.9;
+    }
+}
+
+.btnDelete {
+    flex: 1;
+    padding: 0.5rem;
+    background-color: $rose-pompadour;
+
+    .fileInput {
+        display: block;
+        padding: 0.5rem;
+        border: 2px dashed rgba($green, 0.3);
+        border-radius: 4px;
+        cursor: pointer;
+
+        &:hover {
+            border-color: $green;
+        }
+    }
+
+    .hint {
+        margin-top: 0.5rem;
+        font-size: 0.85rem;
+        color: rgba($green, 0.6);
+    }
+
+    .error {
+        margin-top: 0.5rem;
+        font-size: 0.9rem;
+        color: $rose-pompadour;
+    }
+
+    .mediaPreview {
+        margin-top: 1.5rem;
+        padding: 1.5rem;
+        background: $eggshell ;
+        border-radius: 4px;
+
+        h3 {
+            margin-bottom: 1rem;
+            color: $green;
+            font-size: 1rem;
+        }
+    }
+
+    .mediaGrid {
+        display: grid;
+        grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
+        gap: 1rem;
+    }
+
+    .mediaItem {
+        position: relative;
+        border: 1px solid rgba($green, 0.2);
+        border-radius: 4px;
+        overflow: hidden;
+
+        &:hover .mediaActions {
+            opacity: 1;
+        }
+    }
+
+    .preview {
+        width: 100%;
+        height: 150px;
+        object-fit: cover;
+        display: block;
+    }
+
+    .mediaActions {
+        position: absolute;
+        bottom: 0;
+        left: 0;
+        right: 0;
+        display: flex;
+        gap: 0.25rem;
+        padding: 0.5rem;
+        background: rgba(0, 0, 0, 0.7);
+        opacity: 0;
+        transition: opacity 0.2s;
+    }
+
+    .btnIcon {
+        flex: 1;
+        padding: 0.25rem 0.5rem;
+        background: rgba(255, 255, 255, 0.2);
+        color: $eggshell ;
+        border: 1px solid rgba(255, 255, 255, 0.3);
+        border-radius: 3px;
+        font-size: 0.9rem;
+        cursor: pointer;
+        transition: background 0.2s;
+
+        &:hover:not(:disabled) {
+            background: rgba(255, 255, 255, 0.3);
+        }
+
+        &:disabled {
+            opacity: 0.3;
+            cursor: not-allowed;
+        }
+    }
+
+    .btnRemove {
+        padding: 0.25rem 0.5rem;
+        background: $rose-pompadour;
+        color: $eggshell ;
+        border: none;
+        border-radius: 3px;
+        font-size: 0.9rem;
+        cursor: pointer;
+        transition: opacity 0.2s;
+
+        &:hover {
+            opacity: 0.9;
+        }
+    }
+
+    color: $eggshell;
+    border: none;
+    border-radius: 4px;
+    font-size: 0.9rem;
+    font-weight: 500;
+    cursor: pointer;
+    transition: opacity 0.2s;
+
+    &:hover {
+        opacity: 0.9;
+    }
+}

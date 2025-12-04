@@ -11,6 +11,7 @@ import HideUIOnScroll from "@/components/anim/HideUIOnScroll";
 export default function ClientLayout({ children }) {
   const pathname = usePathname();
   const prevPathname = useRef(pathname);
+  const isAdmin = pathname.startsWith("/admin");
 
   useEffect(() => {
     // Se a rota mudou, limpa tudo do GSAP ANTES de qualquer renderização
@@ -36,10 +37,10 @@ export default function ClientLayout({ children }) {
 
   return (
     <>
-      <HideUIOnScroll />
-      <MainHeader />
+      {!isAdmin && <HideUIOnScroll />}
+      {!isAdmin && <MainHeader />}
       {children}
-      <FixedFooter />
+      {!isAdmin && <FixedFooter />}
     </>
   );
 }

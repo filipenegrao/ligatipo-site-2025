@@ -1,0 +1,102 @@
+@use "../../globals.scss" as *;
+@use "sass:color";
+
+.form {
+    background: $eggshell;
+    border-radius: 8px;
+    padding: 2rem;
+    margin-bottom: 2rem;
+    box-shadow: 0 2px 4px rgba($green, 0.25);
+
+    h2 {
+        margin: 0 0 1.5rem 0;
+        color: $green;
+        font-weight: 700;
+        font-size: 1.25rem;
+    }
+}
+
+.field {
+    margin-bottom: 1.25rem;
+
+    label {
+        display: block;
+        margin-bottom: 0.5rem;
+        margin-left: 14px;
+        font-weight: 600;
+        color: $green;
+    }
+
+    input,
+    textarea,
+    select {
+        width: 100%;
+        padding: 0.75rem;
+        border: 1px solid rgba($green, 1);
+        border-radius: 25px;
+        font-size: 1rem;
+        color: $green;
+        background: transparent;
+        transition: border-color 0.2s, box-shadow 0.2s;
+
+        &:focus {
+            outline: none;
+            border-color: $green;
+            box-shadow: 0 0 0 3px rgba($green, 0.3);
+        }
+    }
+
+    textarea {
+        min-height: 100px;
+        resize: vertical;
+    }
+}
+
+.formActions {
+    display: flex;
+    gap: 1rem;
+    margin-top: 2rem;
+
+    button {
+        flex: 1;
+        padding: 0.75rem 1.5rem;
+        border-radius: 6px;
+        font-size: 1rem;
+        cursor: pointer;
+        transition: all 0.2s;
+    }
+}
+
+.btnPrimary {
+    background-color: $green;
+    color: $eggshell;
+    border: none;
+    font-weight: 600;
+
+    &:hover:not(:disabled) {
+        background-color: color.adjust($green, $lightness: -5%);
+    }
+
+    &:disabled {
+        opacity: 0.6;
+        cursor: not-allowed;
+    }
+}
+
+.btnSecondary {
+    background-color: transparent;
+    color: $green;
+    border: 1px solid $green;
+    font-weight: 600;
+
+    &:hover {
+        background-color: rgba($green, 0.08);
+    }
+}
+
+.error {
+    margin-top: 0.75rem;
+    font-size: 0.9rem;
+    color: $rose-pompadour;
+    font-weight: 500;
+}
