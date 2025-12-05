@@ -12,6 +12,7 @@ export default function AdminShowcasesPage() {
   const router = useRouter();
   const [showcases, setShowcases] = useState([]);
   const [loading, setLoading] = useState(true);
+  const [userRole, setUserRole] = useState(null);
   const [editingId, setEditingId] = useState(null);
   const [showForm, setShowForm] = useState(false);
   const [formData, setFormData] = useState({
@@ -32,6 +33,9 @@ export default function AdminShowcasesPage() {
 
   useEffect(() => {
     if (status === "authenticated") {
+      if (session?.user?.role && userRole !== session.user.role) {
+        setUserRole(session.user.role);
+      }
       fetchShowcases();
     }
   }, [status]);
@@ -564,6 +568,7 @@ export default function AdminShowcasesPage() {
               <ShowcaseCard
                 key={showcase.id}
                 showcase={showcase}
+                userRole={userRole}
                 onEdit={handleEdit}
                 onDelete={handleDelete}
               />

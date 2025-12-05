@@ -1,6 +1,8 @@
 import styles from "./ShowcaseCard.module.scss";
+import BaseCardStyles from "./BaseCard.module.scss";
+import BaseCard from "./BaseCard";
 
-export default function ShowcaseCard({ showcase, onEdit, onDelete }) {
+export default function ShowcaseCard({ showcase, onEdit, onDelete, userRole }) {
   const base = process.env.NEXT_PUBLIC_API_BASE || "";
 
   const getPreviewSrc = () => {
@@ -17,8 +19,24 @@ export default function ShowcaseCard({ showcase, onEdit, onDelete }) {
 
   const previewSrc = getPreviewSrc();
 
+  const actions = [
+    {
+      label: "Editar",
+      onClick: () => onEdit(showcase),
+      className: BaseCardStyles.btnEdit,
+    },
+  ];
+
+  if (userRole === "ADMIN") {
+    actions.push({
+      label: "Deletar",
+      onClick: () => onDelete(showcase.id),
+      className: BaseCardStyles.btnDelete,
+    });
+  }
+
   return (
-    <div className={styles.card}>
+    <BaseCard className={styles.card} actions={actions}>
       {previewSrc && (
         <div className={styles.previewWrapper}>
           <img
@@ -29,27 +47,15 @@ export default function ShowcaseCard({ showcase, onEdit, onDelete }) {
           />
         </div>
       )}
-      <h3>{showcase.title}</h3>
-      {showcase.designer && (
-        <p className={styles.designer}>por {showcase.designer}</p>
-      )}
-      {showcase.publishedAt && (
-        <p className={styles.date}>{showcase.publishedAt}</p>
-      )}
-      <div className={styles.actions}>
-        <button
-          onClick={() => onEdit(showcase)}
-          className={`button ${styles.btnEdit}`}
-        >
-          Editar
-        </button>
-        <button
-          onClick={() => onDelete(showcase.id)}
-          className={`button ${styles.btnDelete}`}
-        >
-          Deletar
-        </button>
+      <div className={styles.info}>
+        <h3>{showcase.title}</h3>
+        {showcase.designer && (
+          <p className={styles.designer}>por {showcase.designer}</p>
+        )}
+        {showcase.publishedAt && (
+          <p className={styles.date}>{showcase.publishedAt}</p>
+        )}
       </div>
-    </div>
+    </BaseCard>
   );
 }

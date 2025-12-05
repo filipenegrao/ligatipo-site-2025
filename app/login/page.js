@@ -28,8 +28,8 @@ export default function LoginPage() {
         return;
       }
 
-      // Redirecionar após login bem-sucedido
-      router.push("/");
+      // Redirecionar para dashboard admin após login bem-sucedido
+      router.push("/admin");
       router.refresh();
     } catch (err) {
       setError("Erro ao fazer login");
@@ -40,7 +40,7 @@ export default function LoginPage() {
 
   const handleGoogleLogin = async () => {
     setLoading(true);
-    await signIn("google", { callbackUrl: "/" });
+    await signIn("google", { callbackUrl: "/admin" });
   };
 
   return (

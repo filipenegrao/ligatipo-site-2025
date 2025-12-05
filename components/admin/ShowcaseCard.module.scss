@@ -2,15 +2,14 @@
 @use "sass:color";
 
 .card {
-    background: transparent;
-    border-radius: 8px;
-    padding: 1.5rem;
-    box-shadow: 0 2px 4px rgba(rgba($green, 0.15), 0.5);
-    transition: transform 0.2s, box-shadow 0.2s;
-
-    &:hover {
-        transform: translateY(-2px);
-        box-shadow: 0 4px 8px rgba($green, 0.15);
+    .info::before {
+        content: "";
+        display: block;
+        width: 100%;
+        height: 1px;
+        background-color: $green;
+        margin-bottom: 1rem;
+        border-radius: 1px;
     }
 
     .previewWrapper {
@@ -36,44 +35,5 @@
         margin: 0.25rem 0;
         font-size: 0.9rem;
         color: rgba($green, 0.7);
-    }
-
-    .actions {
-        display: flex;
-        gap: 0.5rem;
-        margin-top: 1rem;
-    }
-
-    .btnEdit,
-    .btnDelete {
-        flex: 1;
-        // padding: 0.5rem 1rem;
-        // border-radius: 4px;
-        font-size: 0.9rem;
-        cursor: pointer;
-        transition: all 0.2s;
-    }
-
-    .btnEdit {
-        background-color: $green;
-        color: $eggshell;
-        border: 1px solid $green;
-        transition: background-color 0.3s ease;
-
-        &:hover {
-            background-color: color.adjust($green, $lightness: -5%);
-        }
-    }
-
-    .btnDelete {
-        background-color: $eggshell;
-        color: $warning;
-        border: 1px solid $warning;
-        transition: background-color 0.3s ease;
-
-        &:hover {
-            background-color: $warning;
-            color: $eggshell;
-        }
     }
 }

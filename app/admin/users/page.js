@@ -1,15 +1,17 @@
 "use client";
 import { useState, useEffect } from "react";
 import { useSession } from "next-auth/react";
+import ProtectedRoute from "@/components/ProtectedRoute";
 import PageHeader from "@/components/admin/PageHeader";
 import UserCard from "@/components/admin/UserCard";
 import styles from "./admin-users.module.scss";
 import adminForms from "../_styles/forms.module.scss";
 
-export default function AdminUsersPage() {
+function AdminUsersContent() {
   const { data: session, status } = useSession();
   const [users, setUsers] = useState([]);
   const [loading, setLoading] = useState(true);
+  const [userRole, setUserRole] = useState(null);
   const [editingId, setEditingId] = useState(null);
   const [showForm, setShowForm] = useState(false);
   const [formData, setFormData] = useState({
@@ -23,6 +25,9 @@ export default function AdminUsersPage() {
 
   useEffect(() => {
     if (status === "authenticated") {
+      if (session?.user?.role && userRole !== session.user.role) {
+        setUserRole(session.user.role);
+      }
       fetchUsers();
     }
   }, [status]);
@@ -64,6 +69,7 @@ export default function AdminUsersPage() {
         ? {
             email: formData.email,
             name: formData.name,
+            role: formData.role,
             ...(formData.password && { password: formData.password }),
           }
         : formData;
@@ -285,6 +291,7 @@ export default function AdminUsersPage() {
               <UserCard
                 key={user.id}
                 user={user}
+                userRole={userRole}
                 onEdit={handleEdit}
                 onDelete={handleDelete}
               />
@@ -293,5 +300,13 @@ export default function AdminUsersPage() {
         )}
       </div>
     </div>
+  );
+}
+
+export default function AdminUsersPage() {
+  return (
+    <ProtectedRoute allowedRoles={["ADMIN"]}>
+      <AdminUsersContent />
+    </ProtectedRoute>
   );
 }

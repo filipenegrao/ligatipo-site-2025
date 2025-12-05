@@ -1,4 +1,6 @@
 import styles from "./UserCard.module.scss";
+import BaseCardStyles from "./BaseCard.module.scss";
+import BaseCard from "./BaseCard";
 
 const roleLabels = {
   ADMIN: "Administrador",
@@ -12,9 +14,26 @@ const roleBadgeClass = {
   CLIENT: styles.badgeClient,
 };
 
-export default function UserCard({ user, onEdit, onDelete }) {
+export default function UserCard({ user, onEdit, onDelete, userRole }) {
+  const actions = [];
+
+  if (userRole === "ADMIN") {
+    actions.push(
+      {
+        label: "Editar",
+        onClick: () => onEdit(user),
+        className: BaseCardStyles.btnEdit,
+      },
+      {
+        label: "Deletar",
+        onClick: () => onDelete(user.id),
+        className: BaseCardStyles.btnDelete,
+      }
+    );
+  }
+
   return (
-    <div className={styles.card}>
+    <BaseCard className={styles.card} actions={actions}>
       <div className={styles.avatar}>
         {(user.name || user.email).charAt(0).toUpperCase()}
       </div>
@@ -30,20 +49,6 @@ export default function UserCard({ user, onEdit, onDelete }) {
           Criado em: {new Date(user.createdAt).toLocaleDateString("pt-BR")}
         </p>
       )}
-      <div className={styles.actions}>
-        <button
-          onClick={() => onEdit(user)}
-          className={`button ${styles.btnEdit}`}
-        >
-          Editar
-        </button>
-        <button
-          onClick={() => onDelete(user.id)}
-          className={`button ${styles.btnDelete}`}
-        >
-          Deletar
-        </button>
-      </div>
-    </div>
+    </BaseCard>
   );
 }

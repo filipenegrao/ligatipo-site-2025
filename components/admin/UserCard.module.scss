@@ -1,22 +1,15 @@
-.card {
-    background: white;
-    border-radius: 8px;
-    padding: 1.5rem;
-    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-    transition: transform 0.2s, box-shadow 0.2s;
-    text-align: center;
+@use "../../app/globals.scss" as *;
+@use "sass:color";
 
-    &:hover {
-        transform: translateY(-2px);
-        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.15);
-    }
+.card {
+    text-align: center;
 
     .avatar {
         width: 64px;
         height: 64px;
         border-radius: 50%;
-        background: linear-gradient(135deg, #015959, #f8cdcc);
-        color: white;
+        background: linear-gradient(135deg, $green, $eggshell);
+        color: $eggshell;
         display: flex;
         align-items: center;
         justify-content: center;
@@ -28,13 +21,14 @@
     h3 {
         margin: 0 0 0.5rem 0;
         font-size: 1.25rem;
-        color: #015959;
+        color: $green;
+        font-weight: bold;
     }
 
     .email {
         margin: 0.25rem 0;
         font-size: 0.9rem;
-        color: #666;
+        color: rgba($green, 0.7);
         word-break: break-word;
     }
 
@@ -49,60 +43,23 @@
     }
 
     .badgeAdmin {
-        background-color: #015959;
-        color: white;
+        background-color: $green;
+        color: $eggshell;
     }
 
     .badgeEmployee {
-        background-color: #f8cdcc;
-        color: #015959;
+        background-color: rgba($green, 0.15);
+        color: $green;
     }
 
     .badgeClient {
-        background-color: #e5e7eb;
-        color: #4b5563;
+        background-color: rgba($green, 0.08);
+        color: rgba($green, 0.7);
     }
 
     .date {
         margin: 0.5rem 0;
         font-size: 0.85rem;
-        color: #999;
-    }
-
-    .actions {
-        display: flex;
-        gap: 0.5rem;
-        margin-top: 1rem;
-    }
-
-    .btnEdit,
-    .btnDelete {
-        flex: 1;
-        padding: 0.5rem 1rem;
-        border-radius: 4px;
-        font-size: 0.9rem;
-        cursor: pointer;
-        transition: all 0.2s;
-    }
-
-    .btnEdit {
-        background-color: #015959;
-        color: white;
-        border: 1px solid #015959;
-
-        &:hover {
-            background-color: #014444;
-        }
-    }
-
-    .btnDelete {
-        background-color: white;
-        color: #dc2626;
-        border: 1px solid #dc2626;
-
-        &:hover {
-            background-color: #dc2626;
-            color: white;
-        }
+        color: rgba($green, 0.6);
     }
 }

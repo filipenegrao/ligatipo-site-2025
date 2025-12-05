@@ -1,0 +1,63 @@
+@use "../../app/globals.scss" as *;
+@use "sass:color";
+
+.card {
+    background-color: transparent;
+    border-radius: 8px;
+    padding: 1.5rem;
+    box-shadow: 0 2px 4px rgba($green, 0.15);
+    transition: transform 0.2s, box-shadow 0.2s;
+
+    &:hover {
+        transform: translateY(-2px);
+        box-shadow: 0 4px 8px rgba($green, 0.15);
+    }
+
+    .header {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        margin-bottom: 1rem;
+
+        h3 {
+            margin: 0;
+            font-size: 0.9rem;
+            font-weight: 600;
+            color: rgba($green, 0.7);
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+
+        .icon {
+            font-size: 1.5rem;
+            opacity: 0.5;
+        }
+    }
+
+    .value {
+        font-size: 2.5rem;
+        font-weight: 700;
+        color: $green;
+        margin-bottom: 0.5rem;
+    }
+
+    .trend {
+        display: flex;
+        align-items: center;
+        gap: 0.25rem;
+        font-size: 0.85rem;
+        font-weight: 600;
+
+        .arrow {
+            font-size: 1.2rem;
+        }
+
+        &.up {
+            color: $green;
+        }
+
+        &.down {
+            color: $warning;
+        }
+    }
+}

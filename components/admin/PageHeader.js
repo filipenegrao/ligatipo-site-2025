@@ -1,4 +1,5 @@
 import styles from "./PageHeader.module.scss";
+import BaseCardStyles from "./BaseCard.module.scss";
 
 export default function PageHeader({ title, action }) {
   return (
@@ -7,7 +8,7 @@ export default function PageHeader({ title, action }) {
       {action && (
         <button
           onClick={action.onClick}
-          className={`button ${styles.btnAction}`}
+          className={`button ${BaseCardStyles.btnEdit} ${styles.btnAction}`}
         >
           {action.label}
         </button>

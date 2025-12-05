@@ -18,8 +18,6 @@ export default function ThemeScrollController() {
       const introSection = document.querySelector(".intro-section");
       const middleLine = document.querySelector(".mid-line");
 
-      console.log("intro: ", introSection, "mid line: ", middleLine);
-
       if (!bg || !menu || sections.length === 0) return;
 
       // define initial state
@@ -112,7 +110,6 @@ export default function ThemeScrollController() {
 
       // Middle line fade in on intro
       if (introSection && middleLine) {
-        console.log("Setting up middle line animation");
         gsap.set(middleLine, {
           transformOrigin: "bottom center",
           willChange: "transform",

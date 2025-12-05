@@ -6,6 +6,10 @@ import styles from "./AdminHeader.module.scss";
 export default function AdminHeader() {
   const { data: session } = useSession();
 
+  const handleSignOut = async () => {
+    await signOut({ callbackUrl: "/login" });
+  };
+
   return (
     <header className={styles.adminHeader}>
       <div className={styles.container}>
@@ -13,23 +17,26 @@ export default function AdminHeader() {
           Ligatipo <span className={styles.admin}>Admin</span>
         </Link>
         <nav className={styles.nav}>
+          <Link href="/admin" className={styles.navLink}>
+            Dashboard
+          </Link>
           <Link href="/admin/showcases" className={styles.navLink}>
             Showcases
           </Link>
           <Link href="/admin/users" className={styles.navLink}>
             Usuários
           </Link>
-          {session && (
-            <div className={styles.userSection}>
-              <span className={styles.userName}>{session.user?.email}</span>
-              <button
-                onClick={() => signOut()}
-                className={`button ${styles.signOut}`}
-              >
-                Sair
-              </button>
-            </div>
-          )}
+          <div className={styles.userSection}>
+            {session?.user?.email && (
+              <span className={styles.userName}>{session.user.email}</span>
+            )}
+            <button
+              onClick={handleSignOut}
+              className={`button ${styles.signOut}`}
+            >
+              Sair
+            </button>
+          </div>
         </nav>
       </div>
     </header>

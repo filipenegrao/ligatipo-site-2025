@@ -1,0 +1,22 @@
+/* Variable Icon Font */
+@font-face {
+    font-family: 'LigatipoIcons';
+    src: url('/fonts/LigatipoUIIconsVF.woff2') format('woff2');
+    font-weight: 100 700;
+    /* Variable font weight range */
+    font-style: normal;
+    font-display: swap;
+}
+
+/* Classe genérica para ícones */
+.icon {
+    font-family: 'LigatipoIcons', sans-serif;
+    font-weight: 100 700;
+    /* Permite variação de peso */
+    font-style: normal;
+    speak: never;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    display: inline-block;
+    line-height: 1;
+}
